@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { TopicContext } from "../../context/TopicContext";
 
 type Props = {};
 
-const LifeCycleDemo = ({ random, number }: any) => {
+const LifeCycleDemo = ({ random, number, data }: any) => {
+  const [topic, setTopic] = useContext(TopicContext);
+
   useEffect(() => {
     console.log("I am side effect !");
 
@@ -17,16 +20,18 @@ const LifeCycleDemo = ({ random, number }: any) => {
 
   useEffect(() => {
     console.log("I am doing because random change");
-  }, [number]);
+  }, [random]);
 
   return (
     <div>
       <p>I am a demo !</p>
+      <p>{data}</p>
+      <button onClick={() => setTopic(random)}>change Topic {topic}</button>
     </div>
   );
 };
 
-export default function WSEffectDemo({}: Props) {
+export default function WSEffectDemo({ data }: any) {
   const [mount, setMount] = useState(true);
   const [random, setRandom] = useState(Math.random());
 
@@ -43,7 +48,7 @@ export default function WSEffectDemo({}: Props) {
       <h4>Demo number: {random}</h4>
       <button onClick={() => handleOnReRender()}>Re - render</button>
       <button onClick={() => handleOnMount()}> Mount / UnMount</button>
-      {mount && <LifeCycleDemo random={random} number={1} />}
+      {mount && <LifeCycleDemo random={random} number={1} data={data} />}
     </div>
   );
 }

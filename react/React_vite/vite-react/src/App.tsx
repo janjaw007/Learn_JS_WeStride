@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import WSCounter from "./components/WSCounter/WSCounter";
 import WSEffectDemo from "./components/WSEffectDemo/WSEffectDemo";
+import { TopicProvider } from "./context/TopicContext";
 
 type Props = {};
 
@@ -15,7 +16,9 @@ export default function App({}: Props) {
       <br />
       <hr />
       <br />
-      <WSEffectDemo />
+      <TopicProvider>
+        <WSEffectDemo data={"WS 123456"} />
+      </TopicProvider>
     </div>
   );
 }
