@@ -1,9 +1,9 @@
-// function Button() {
-//   const handleOnclick = () => {
-//     console.log("Click already !!");
-//   };
-//   return <Button onClick={() => handleOnclick()}>click me!</Button>;
-// }
+function Button() {
+  const handleOnclick = () => {
+    console.log("Click already !!");
+  };
+  return <button onClick={() => handleOnclick()}>click me!</button>;
+}
 
 function App() {
   return (
